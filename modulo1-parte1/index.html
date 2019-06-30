@@ -1,21 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>React - Testes rapidos no browser</title>
 </head>
-<body>
-    <h1>Hello Word</h1>
-    <div id="app"></div>
-    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 
-<script>
- var h1 = React.createElement('h1', null,  'Hello h1 React');
- ReactDOM.render(h1, document.getElementById('app'));
- console.log(h1); 
-</script>
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/6.0.0/browser.min.js"></script>
+
+    <script type="text/babel">
+        /*
+        React sem JSX
+        var h1 = React.createElement('h1', null, [
+            React.createElement('span', null, React.createElement('span', null, 'elemento aninhado ao Span 1')),
+            React.createElement('span', null, 'Texto do Span 2')
+
+        ]);
+        */
+
+        /* Outra forma de criar elementos, porém não funciona para todos
+        var h1 = React.DOM.h1(null, [
+            React.DOM.span(null, React.DOM.i(null, 'elemento aninhado ao Span 1')),
+            React.DOM.span(null, 'Texto do Span 2')
+        ]);
+        */
+
+        /*React com JSX
+        ReactDOM.render(
+            <h1> Hello World </h1>,
+            document.getElementById('app')
+        );
+        console.log(h1);
+        */
+
+        //React com JSX - Componente
+        var Title = React.createClass({
+            render: function(){
+                return (
+                    <h1>
+                        <span> Hello World Title </span>
+                    </h1>
+                )
+            }
+        })
+
+        ReactDOM.render(
+            <Title />,
+            document.getElementById('app')
+        )
+    </script>
 </body>
+
 </html>

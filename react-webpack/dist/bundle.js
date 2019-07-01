@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "7b2b46f0922f81390616"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "dcf555ae094db882d1d5"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -18387,29 +18387,31 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	(0, _reactDom.render)(_react2.default.createElement(
-	    _reactHotLoader.AppContainer,
-	    null,
-	    _react2.default.createElement(_app2.default, null)
-	), document.querySelector('[data-js="app"]'));
+	var renderApp = function renderApp(NextApp) {
+	    (0, _reactDom.render)(_react2.default.createElement(
+	        _reactHotLoader.AppContainer,
+	        null,
+	        _react2.default.createElement(NextApp, null)
+	    ), document.querySelector('[data-js="app"]'));
+	};
+	
+	renderApp(_app2.default);
 	
 	if (true) {
 	    module.hot.accept(430, function () {
 	        var NextApp = __webpack_require__(430).default;
 	
-	        (0, _reactDom.render)(_react2.default.createElement(
-	            _reactHotLoader.AppContainer,
-	            null,
-	            _react2.default.createElement(NextApp, null)
-	        ), document.querySelector('[data-js="app"]'));
+	        renderApp(NextApp);
 	    });
 	}
 	;
-
+	
 	(function () {
 	    if (typeof __REACT_HOT_LOADER__ === 'undefined') {
 	        return;
 	    }
+	
+	    __REACT_HOT_LOADER__.register(renderApp, 'renderApp', 'C:/Projetos/curso-reactjs-ninja/curso-reactjs-ninja-udemy/react-webpack/src/index.js');
 	})();
 
 	;

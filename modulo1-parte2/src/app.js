@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import Button from './button'
+import LikeButton from './like-button'
+import SeachButton from './search-button'
 
 class App extends Component {
     render() {
         return (
             <div className='container' >
-                <Button>
-                    <span>Texto</span>
-                    Outro Texto
-                </Button>
+                <LikeButton />
+                <SeachButton />
             </div>
         )
     }

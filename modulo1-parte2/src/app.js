@@ -1,31 +1,61 @@
 import React, { Component } from 'react'
-import Button from './button'
-import Square from './square'
+import Timer from './timer'
 
 class App extends Component {
     constructor() {
         super()
         this.state = {
-            color: 'green'
+           showTimer: true
         }
+        console.log('constructor')
+    }
+
+    // O componente ainda não esta na tela, no DOM
+    // Não deve ter manipulação de DOM
+    componentWillMount() {
+        console.log('componentWillMount')
+    }
+
+    // O componente já esta na tela, no DOM - 
+    //pode ser usado para manipular outras bibliotecas
+    //Pode manipular o DOM
+    componentDidMount() {
+        console.log('componentDidMount')
     }
 
     render() {
+        console.log('render')
         return (
             <div >
-                <Square color={this.state.color} />
-
-                {['red', 'green', 'blue'].map((color) => (
-                    <Button
-                        key={color}
-                        handleClick={() => this.setState({ color })}>
-                        {color}
-                    </Button>
-                ))}
+                {this.state.showTimer && <Timer />}
+                <button onClick={() => {
+                    this.setState({showTimer: !this.state.showTimer})
+                }}>Show / Hide Timer</button>
             </div>
         )
     }
 }
+
+
+
+
+//     render() {
+//         console.log('render')
+//         return (
+//             <div >
+//                 <Square color={this.state.color} />
+
+//                 {['red', 'green', 'blue'].map((color) => (
+//                     <Button
+//                         key={color}
+//                         handleClick={() => this.setState({ color })}>
+//                         {color}
+//                     </Button>
+//                 ))}
+//             </div>
+//         )
+//     }
+// }
 
 
 

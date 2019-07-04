@@ -8,24 +8,24 @@ class App extends Component {
             time: 0,
             showTimer: true
         }
-        console.log('constructor')
+        console.log('constructor App')
     }
 
     // O componente ainda não esta na tela, no DOM
     // Não deve ter manipulação de DOM
     componentWillMount() {
-        console.log('componentWillMount')
+        console.log('componentWillMount App')
     }
 
     // O componente já esta na tela, no DOM - 
     //pode ser usado para manipular outras bibliotecas
     //Pode manipular o DOM
     componentDidMount() {
-        console.log('componentDidMount')
+        console.log('componentDidMount App')
     }
 
     render() {
-        console.log('render')
+        console.log('render App')
         return (
             <div >
                <Timer time={this.state.time} />

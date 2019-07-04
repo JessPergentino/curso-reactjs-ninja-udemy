@@ -29,6 +29,7 @@ class Timer extends Component {
         console.log('componentWillUpdate Timer', this.props, nextProps)
     }
 
+    //Executa quando o componente já foi atualizado
     componentDidUpdate(prevProps,prevState){
         console.log('componentDidUpdate Timer', prevProps, this.props)
     }

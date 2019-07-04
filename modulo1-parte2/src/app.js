@@ -1,42 +1,58 @@
 import React, { Component } from 'react'
-import Timer from './timer'
+import Button from './button'
 
 class App extends Component {
-    constructor() {
-        super()
-        this.state = {
-            time: 0,
-            showTimer: true
-        }
-        console.log('constructor App')
-    }
-
-    // O componente ainda não esta na tela, no DOM
-    // Não deve ter manipulação de DOM
-    componentWillMount() {
-        console.log('componentWillMount App')
-    }
-
-    // O componente já esta na tela, no DOM - 
-    //pode ser usado para manipular outras bibliotecas
-    //Pode manipular o DOM
-    componentDidMount() {
-        console.log('componentDidMount App')
-    }
-
     render() {
-        console.log('render App')
         return (
             <div >
-               <Timer time={this.state.time} />
-
-                <button onClick={() => {
-                    this.setState({ time: this.state.time + 10 })
-                }}>Change props</button>
+               <Button>
+                   Clique em Mim
+                </Button>
             </div>
         )
     }
 }
+
+
+
+
+//Lifecicle do React
+// class App extends Component {
+//     constructor() {
+//         super()
+//         this.state = {
+//             time: 0,
+//             showTimer: true
+//         }
+//         console.log('constructor App')
+//     }
+
+//     // O componente ainda não esta na tela, no DOM
+//     // Não deve ter manipulação de DOM
+//     componentWillMount() {
+//         console.log('componentWillMount App')
+//     }
+
+//     // O componente já esta na tela, no DOM - 
+//     //pode ser usado para manipular outras bibliotecas
+//     //Pode manipular o DOM
+//     componentDidMount() {
+//         console.log('componentDidMount App')
+//     }
+
+//     render() {
+//         console.log('render App')
+//         return (
+//             <div >
+//                <Timer time={this.state.time} />
+
+//                 <button onClick={() => {
+//                     this.setState({ time: this.state.time + 10 })
+//                 }}>Change props</button>
+//             </div>
+//         )
+//     }
+// }
 
 
 

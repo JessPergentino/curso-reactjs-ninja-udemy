@@ -10,6 +10,11 @@ class Timer extends Component {
         this.timer
     }
 
+    //Mostra o estado anterior e o atual das props
+    componentWillReceiveProps(nextProps){
+        console.log('componentWillReceiveProps', this.props, nextProps)
+    }
+
     // Só executa uma vez
     componentDidMount() {
         this.timer = setInterval(() => {

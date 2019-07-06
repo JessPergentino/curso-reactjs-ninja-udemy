@@ -10,16 +10,50 @@ class App extends Component {
 
     render() {
         return (
-            <form>
-                <textarea value={this.state.value} onChange={(e) => {
-                    this.setState({
-                        value: e.target.value
-                    })
-                }} />
+            <form onSubmit={(e) =>{
+                e.preventDefault()
+                console.log('event', e)
+            } }
+            
+            onChange={(e) => {
+                console.log('name', e.target.name)
+                console.log('value', e.target.value)
+            }}
+            >
+                <input type='name' name='name'/>
+                <input type='email' name='email'/>
+                
+                <button type='submit'>Enviar Email</button>
             </form>
         )
     }
 }
+
+
+
+
+
+
+// class App extends Component {
+//     constructor(){
+//         super()
+//         this.state = {
+//             value: 'Digite aqui um comentário'
+//         }
+//     }
+
+//     render() {
+//         return (
+//             <form>
+//                 <textarea value={this.state.value} onChange={(e) => {
+//                     this.setState({
+//                         value: e.target.value
+//                     })
+//                 }} />
+//             </form>
+//         )
+//     }
+// }
 
 
 // Select e Option

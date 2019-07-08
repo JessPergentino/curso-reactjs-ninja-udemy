@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {PropTypes} from 'react'
 
 const Repos = ({ className, title, repos }) => (
     <div className={className}>
@@ -18,9 +18,9 @@ Repos.defaultProps = {
 }
 
 Repos.prototype = {
-    className: React.PropTypes.string,
-    title: React.PropTypes.isRequired,
-    repos: React.PropTypes.array
+    className: PropTypes.string,
+    title: PropTypes.isRequired,
+    repos: PropTypes.array
 }
 
 export default Repos 

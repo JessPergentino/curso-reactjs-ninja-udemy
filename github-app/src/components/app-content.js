@@ -7,19 +7,22 @@ import Repos from './repos'
 const AppContent = ({ userinfo, repos, starred }) => (
     <div className='app'>
         <Search />
-        {!!userinfo && <UserInfo userinfo={userinfo}/>}
+        {!!userinfo && <UserInfo userinfo={userinfo} />}
         {!!userinfo && <Actions />}
 
-        {!!repos.lenght && <Repos
+        {!!repos.length &&
+            <Repos
+                className='repos'
+                title='Repositórios:'
+                repos={repos} />
+        }
 
-            className='repos'
-            title='Repositórios:'
-            repos={repos} />}
-
-        {!!starred.lenght && <Repos
-            className='starred'
-            title='Favoritos:'
-            repos={starred} />}
+        {!!starred.length &&
+            <Repos
+                className='starred'
+                title='Favoritos:'
+                repos={starred} />
+        }
     </div>
 )
 

@@ -12,15 +12,21 @@ class App extends Component {
         }
     }
 
+    getGitHubApiUrl (username, type){
+        const internalUser = username ? `/${username}` : ''
+        const internalType = type ? `/${type}` : ''
+        
+        return `https://api.github.com/users${internalUser}${internalType}`
+    }
+
     handleSearch(e) {
         const value = e.target.value
         const keyCode = e.which || e.keyCode
         const ENTER = 13
 
         if (keyCode === ENTER) {
-            ajax().get(`https://api.github.com/users/${value}`)
+            ajax().get(this.getGitHubApiUrl(value))
                 .then((result) => {
-                    console.log(result)
                     this.setState({
                         userinfo: {
                             username: result.name,
@@ -29,14 +35,18 @@ class App extends Component {
                             repos: result.public_repos,
                             followers: result.followers,
                             following: result.following
-                        }
+                        },
+                        repos: [],
+                        starred: []
                     })
                 })
         }
     }
 
     getRepos(type) {
-        ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/${type}`)
+        return (e) => {
+        const username = this.state.userinfo.login
+        ajax().get(this.getGitHubApiUrl(username, type))
             .then((result) => {
                 this.setState({
                     [type]: result.map((repo) => ({
@@ -45,6 +55,8 @@ class App extends Component {
                     }))
                 })
             })
+        }
+        
     }
 
     render() {
@@ -53,10 +65,9 @@ class App extends Component {
             repos={this.state.repos}
             starred={this.state.starred}
             handleSearch={(e) => this.handleSearch(e)}
-            onClickRepo={() => getRepos('repos')}
-            onClickStarred={() => getRepos('starred')}
+            onClickRepo={this.getRepos('repos')}
+            onClickStarred={this.getRepos('starred')}
         />
-
     }
 }
 

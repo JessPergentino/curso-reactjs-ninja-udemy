@@ -1,10 +1,15 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
-const Actions = () => (
+const Actions = ({ onClickRepo, onClickStarred }) => (
     <div className='actions'>
-        <button>Ver Repositórios</button>
-        <button>Ver favoritos</button>
+        <button onClick={onClickRepo}>Ver Repositórios</button>
+        <button onClick={onClickStarred}>Ver favoritos</button>
     </div>
 )
+
+Actions.propTypes = {
+    onClickRepo: PropTypes.func.isRequired,
+    onClickStarred: PropTypes.func.isRequired
+}
 
 export default Actions

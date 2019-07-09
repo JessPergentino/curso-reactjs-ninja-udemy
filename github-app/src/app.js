@@ -34,12 +34,34 @@ class App extends Component {
         }
     }
 
+    onClickRepo(e) {
+        ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/repos`)
+            .then((result) => {
+                this.setState({
+                    repos: result
+                })
+            })
+
+    }
+
+    onClickStarred(e) {
+        ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/starred{/owner}{/repo}`)
+            .then((result) => {
+                this.setState({
+                    starred: result
+                })
+            })
+
+    }
+
     render() {
         return <AppContent
             userinfo={this.state.userinfo}
             repos={this.state.repos}
             starred={this.state.starred}
             handleSearch={(e) => this.handleSearch(e)}
+            onClickRepo={(e) => this.onClickRepo(e)}
+            onClickStarred={(e) => this.onClickStarred(e)}
         />
 
     }

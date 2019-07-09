@@ -20,6 +20,7 @@ class App extends Component {
         if (keyCode === ENTER) {
             ajax().get(`https://api.github.com/users/${value}`)
                 .then((result) => {
+                    console.log(result)
                     this.setState({
                         userinfo: {
                             username: result.name,
@@ -34,24 +35,16 @@ class App extends Component {
         }
     }
 
-    onClickRepo(e) {
-        ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/repos`)
+    getRepos(type) {
+        ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/${type}`)
             .then((result) => {
                 this.setState({
-                    repos: result
+                    [type]: result.map((repo) => ({
+                        name: repo.name,
+                        link: repo.html_url
+                    }))
                 })
             })
-
-    }
-
-    onClickStarred(e) {
-        ajax().get(`https://api.github.com/users/${this.state.userinfo.login}/starred{/owner}{/repo}`)
-            .then((result) => {
-                this.setState({
-                    starred: result
-                })
-            })
-
     }
 
     render() {
@@ -60,8 +53,8 @@ class App extends Component {
             repos={this.state.repos}
             starred={this.state.starred}
             handleSearch={(e) => this.handleSearch(e)}
-            onClickRepo={(e) => this.onClickRepo(e)}
-            onClickStarred={(e) => this.onClickStarred(e)}
+            onClickRepo={() => getRepos('repos')}
+            onClickStarred={() => getRepos('starred')}
         />
 
     }

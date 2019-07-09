@@ -1,6 +1,5 @@
 import React, { PropTypes } from 'react'
 
-
 const Search = ({ isDisable, handleSearch }) => (
     <div className='search'>
         <input
@@ -13,6 +12,7 @@ const Search = ({ isDisable, handleSearch }) => (
 )
 
 Search.propTypes = {
+    isDisable: PropTypes.bool.isRequired,
     handleSearch: PropTypes.func.isRequired
 }
 

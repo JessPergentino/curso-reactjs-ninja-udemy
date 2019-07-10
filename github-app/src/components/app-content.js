@@ -33,9 +33,9 @@ AppContent.propTypes = {
     repos: PropTypes.array.isRequired,
     starred: PropTypes.array.isRequired,
     isFetching: PropTypes.bool.isRequired,
-    handleSearch: PropTypes.fun.isRequired,
-    onClickRepo: PropTypes.fun.isRequired,
-    onClickStarred: PropTypes.fun.isRequired
+    handleSearch: PropTypes.func.isRequired,
+    onClickRepo: PropTypes.func.isRequired,
+    onClickStarred: PropTypes.func.isRequired
 }
 
 export default AppContent

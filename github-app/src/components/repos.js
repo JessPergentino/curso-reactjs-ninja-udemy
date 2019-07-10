@@ -17,9 +17,9 @@ Repos.defaultProps = {
     className: ''
 }
 
-Repos.prototype = {
+Repos.propTypes = {
     className: PropTypes.string,
-    title: PropTypes.isRequired,
+    title: PropTypes.string.isRequired,
     repos: PropTypes.array
 }
 

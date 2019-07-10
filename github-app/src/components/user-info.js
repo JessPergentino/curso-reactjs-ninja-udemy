@@ -18,7 +18,7 @@ const UserInfo = ({userinfo}) => (
     </div>
 )
 
-UserInfo.protoTypes = {
+UserInfo.propTypes = {
     userinfo: PropTypes.shape({
         username: PropTypes.string.isRequired,
         photo: PropTypes.string.isRequired,
@@ -26,7 +26,6 @@ UserInfo.protoTypes = {
         repos: PropTypes.number.isRequired,
         followers: PropTypes.number.isRequired,
         following: PropTypes.number.isRequired,
-        
     })
 }
 

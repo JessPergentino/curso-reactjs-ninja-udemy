@@ -8,7 +8,7 @@ const App = React.createClass({
 
                     <div className="inner">
                         <i>
-                            <h3 className="masthead-brand"> <img src="https://img.icons8.com/color/48/000000/pokedex.png"/>  Pokédex - App</h3>
+                            <h3 className="masthead-brand"> <img src="https://img.icons8.com/color/48/000000/pokedex.png" />  Pokédex - App</h3>
                         </i>
 
                         <nav className="nav nav-masthead justify-content-center">

@@ -1,4 +1,6 @@
 import React from 'react'
+import Search from './components/search'
+import Menu from './components/menu'
 
 const App = React.createClass({
     render: function () {
@@ -6,26 +8,21 @@ const App = React.createClass({
             <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
                 <header className="masthead mb-auto">
 
-                    <div className="inner">
-                        <i>
-                            <h3 className="masthead-brand"> <img src="https://img.icons8.com/color/48/000000/pokedex.png" />  Pokédex - App</h3>
-                        </i>
+                    <Menu
+                        img="https://img.icons8.com/color/48/000000/pokedex.png"
+                        titulo='  Pokédex - App' />
 
-                        <nav className="nav nav-masthead justify-content-center">
-                            <a className="nav-link active" href="#">Home</a>
-                        </nav>
-                    </div>
                 </header>
 
                 <main role="main" className="inner cover">
-                    <h1 className="cover-heading">Encontre Aqui o seu Pokémon Favorito</h1>
-                    <input className='form-control' type='search' placeholder='Digite o nome do Pokémon' />
-                    <p className="lead mt-3">
-                        Realize a busca por Pokémon pelo nome.
-                    </p>
 
-                    <div>
-                        <div className="card text-white bg-dark mb-3">
+                    <Search
+                        msgIntro='Encontre Aqui o seu Pokémon Favorito'
+                        msgPlaceHolder='Digite o nome do Pokémon'
+                    />
+
+                    <div className='pokemon-info'>
+                        <div className="card text-white bg-dark mb-3 mt-2">
                             <div className="row no-gutters">
                                 <div className="col-md-4">
                                     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/132.png" className="card-img" />

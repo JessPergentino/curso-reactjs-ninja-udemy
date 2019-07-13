@@ -10,9 +10,7 @@ const PokemonInfo = ({ pokemonInfo }) => (
 
         <PokemonList title='Habilidades' list={pokemonInfo.abilities} />
 
-        <PokemonList titulo='Movimentos' list={pokemonInfo.moves} />
-
-        <PokemonList titulo='Tipo' list={pokemonInfo.types} />
+        <PokemonList title='Tipo' list={pokemonInfo.types} />
 
     </div>
 

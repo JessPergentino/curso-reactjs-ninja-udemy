@@ -6,7 +6,9 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
-            pokemonInfo: null
+            pokemonInfo: null,
+            isFetching: false,
+            error: ''
         }
 
         this.handleSearch = this.handleSearch.bind(this)
@@ -18,6 +20,10 @@ class App extends Component {
         const ENTER = 13
 
         if (keyCode === ENTER) {
+            this.setState({
+                isFetching: true,
+                pokemonInfo: null
+            })
             ajax().get(`https://pokeapi.co/api/v2/pokemon/${value}`)
                 .then((result) => {
                     this.setState({
@@ -25,21 +31,27 @@ class App extends Component {
                             name: result.name,
                             weight: result.weight,
                             height: result.height,
-                            abilities: result.abilities,
-                            moves: result.moves,
-                            types: result.types,
+                            abilities: result.abilities.map((item) => {
+                                return item.ability
+                            }),
+                            types: result.types.map((item) => {
+                                return item.type
+                            }),
                             sprites: result.sprites
-                        }
+                        },
                     })
+
                 })
-                console.log(this.state.pokemonInfo.abilities)
+                .always(() => this.setState({ isFetching: false }))
         }
     }
 
     render() {
         return (< AppContent
             pokemonInfo={this.state.pokemonInfo}
+            isFetching={this.state.isFetching}
             handleSearch={this.handleSearch}
+            error={this.state.error}
         />
         )
     }

@@ -3,7 +3,7 @@ import Menu from './menu'
 import Search from './search'
 import Card from './card'
 
-const AppContent = ({ handleSearch, pokemonInfo }) => (
+const AppContent = ({ handleSearch, pokemonInfo, isFetching, error }) => (
 
     <div className="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
@@ -14,11 +14,14 @@ const AppContent = ({ handleSearch, pokemonInfo }) => (
         </header>
 
         <main role="main" className="inner cover">
+
             <Search
                 msgIntro='Encontre Aqui o seu Pokémon Favorito'
                 msgPlaceHolder='Digite o nome do Pokémon'
                 handleSearch={handleSearch}
+                isDisable={isFetching}
             />
+            {isFetching && <di>Carregando...</di>}
 
             {!!pokemonInfo && <Card
                 imgCard={pokemonInfo.sprites.front_default}

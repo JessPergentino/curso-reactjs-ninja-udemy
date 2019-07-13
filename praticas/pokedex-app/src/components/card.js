@@ -21,9 +21,7 @@ const Card = ({ imgCard, pokemonInfo }) => (
 
 Card.propTypes = {
     imgCard: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    height: PropTypes.number.isRequired,
-    weight: PropTypes.number.isRequired
+    pokemonInfo: PropTypes.object
 }
 
 export default Card

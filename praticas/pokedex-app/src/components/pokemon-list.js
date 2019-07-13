@@ -1,12 +1,12 @@
 import React, { PropTypes } from 'react'
 
-const PokemonList = ({ titulo, list }) => (
+const PokemonList = ({ title, list }) => (
     <div>
-        <h5>{titulo}</h5>
+        <h5>{title}</h5>
         <ul className='list-group list-group-horizontal' >
-            {list.map((item, index) => (
+            {list.map((iten, index) => (
                 <li key={index} className='list-group-item text-white bg-dark flex-fill'>
-                    {item.name}
+                    {iten.name}
                 </li>
             ))}
         </ul>
@@ -14,9 +14,8 @@ const PokemonList = ({ titulo, list }) => (
 )
 
 PokemonList.propTypes = {
-    titulo: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     list: PropTypes.array.isRequired
 }
 
 export default PokemonList
-

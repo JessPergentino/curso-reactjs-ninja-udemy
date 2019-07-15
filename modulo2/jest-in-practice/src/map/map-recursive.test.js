@@ -1,5 +1,5 @@
 import { expect } from 'chai'
-import map from './map'
+import map from './map-recursive'
 
 it('map should be a function', () => {
     expect(map).to.be.a('function')

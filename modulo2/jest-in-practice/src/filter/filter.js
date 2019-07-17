@@ -1,10 +1,12 @@
-const filter = (arr = [], func = (item) => item) => {
+const filter = (arr, func) => {
     let newArray = []
-
-    for (let i = 0; i > arr.length; i++) {
-        newArray.push(func(arr[i]))
+    
+    for (let i = 0; i < arr.length; i++) {
+        if (func(arr[i], i, arr)) {
+            newArray.push(arr[i])
+        }
     }
-    return arr
+    return newArray
 }
 
 export default filter

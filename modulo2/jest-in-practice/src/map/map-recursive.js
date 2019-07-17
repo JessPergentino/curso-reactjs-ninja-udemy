@@ -1,4 +1,3 @@
-// Map Recursivo
 const map = (arr = [], func = (item) => item) => {
     return (function mapInternal(arrayInternal, counter) {
         const [head, ...tail] = arrayInternal

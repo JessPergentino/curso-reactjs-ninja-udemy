@@ -40,3 +40,44 @@ it('find([1,2,3,2,1,5], (item, index, array) => index === array.indexOf(item) ) 
     const after = 1
     expect(before).to.be.deep.equal(after)
 })
+
+//Testes de Exceção
+it('find(1) should throw a TypeError', () => {
+    let err
+    try {
+        find(1)
+    } catch (error) {
+        err = error
+    }
+    expect(err.name).to.be.deep.equal('TypeError')
+})
+
+it('find(1) should throw a TypeError with message "The first parameter must be an array"', () => {
+    let err
+    try {
+        find(1)
+    } catch (error) {
+        err = error
+    }
+    expect(err.message).to.be.deep.equal('The first parameter must be an array')
+})
+
+it('find([1,2], "func") should throw a TypeError', () => {
+    let err
+    try {
+        find([1, 2], "func")
+    } catch (error) {
+        err = error
+    }
+    expect(err.name).to.be.deep.equal('TypeError')
+})
+
+it('find([1,2]) should throw a TypeError with message "The second parameter must be a function"', () => {
+    let err
+    try {
+        find([1, 2], "func")
+    } catch (error) {
+        err = error
+    }
+    expect(err.message).to.be.deep.equal('The second parameter must be a function')
+})

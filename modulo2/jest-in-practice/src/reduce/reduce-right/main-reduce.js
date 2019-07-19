@@ -1,4 +1,12 @@
-const mainReduce = (arr, func, initialValue) => {
+const mainReduce = (arr = [], func = (item) => item, initialValue) => {
+    if (!Array.isArray(arr)) {
+        throw new TypeError('The first parameter must be an array')
+    }
+
+    if (typeof func !== 'function') {
+        throw new TypeError('The second parameter must be a function')
+    }
+
     let acc = initialValue
     let arrCopy = arr
 

@@ -1,6 +1,14 @@
 const isInitialValueUndefined = (initialValue) => initialValue === undefined
 
-const mainReduce = (arr, func, initialValue) => {
+const mainReduce = (arr = [], func = (item) => item, initialValue) => {
+    if (!Array.isArray(arr)) {
+        throw new TypeError('The first parameter must be an array')
+    }
+
+    if (typeof func !== 'function') {
+        throw new TypeError('The second parameter must be a function')
+    }
+
     const acc = isInitialValueUndefined(initialValue) ? arr[0] : initialValue
     const arrCopy = isInitialValueUndefined(initialValue) ? arr.slice(1) : arr
 

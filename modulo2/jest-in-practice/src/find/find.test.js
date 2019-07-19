@@ -11,7 +11,7 @@ it('find([1,2], (item) => item) should be return 1', () => {
     expect(before).to.be.deep.equal(after)
 })
 
-it('find([0, 1, 2], (item) => item) should be return 0', () => {
+it('find([0, 1, 2], (item) => item) should be return 1', () => {
     const before = find([0, 1, 2], (item) => item)
     const after = 1
     expect(before).to.be.deep.equal(after)
@@ -20,6 +20,12 @@ it('find([0, 1, 2], (item) => item) should be return 0', () => {
 it('find([1,2,3], (item) => item === 3) should be return 1', () => {
     const before = find([1,2,3], (item) => item === 3)
     const after = 3
+    expect(before).to.be.deep.equal(after)
+})
+
+it('find([1,2,3], (item) => item === 4) should be return undefined', () => {
+    const before = find([1,2,3], (item) => item === 4)
+    const after = undefined
     expect(before).to.be.deep.equal(after)
 })
 

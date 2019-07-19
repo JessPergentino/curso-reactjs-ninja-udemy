@@ -11,10 +11,3 @@ const find = (arr, func) => {
 }
 
 export default find
-
-// for (let i = 0; i < arr.length; i++) {
-//     if (func(arr[i], i, arr)) {
-//         return arr[i]
-//     }
-// }
-// return undefined

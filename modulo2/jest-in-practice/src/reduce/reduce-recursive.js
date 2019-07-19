@@ -1,4 +1,4 @@
-import mainReduce from "../reduce-right/main-reduce-recursive";
+import mainReduce from "./reduce-right/main-reduce-recursive";
 
 const reduce = mainReduce
 

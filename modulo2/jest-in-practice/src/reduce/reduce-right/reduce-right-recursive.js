@@ -1,5 +1,5 @@
 import mainReduceRecursive from './main-reduce-recursive'
-import reverseRecursive from '../reverse/reverse-recursive'
+import reverseRecursive from '../../reverse/reverse-recursive'
 
 const reduceRightRecursive = (arr, ...params) => mainReduceRecursive(reverseRecursive(arr), ...params)
 

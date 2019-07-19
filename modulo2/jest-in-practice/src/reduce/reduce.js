@@ -1,4 +1,4 @@
-import mainReduce from '../reduce-right/main-reduce'
+import mainReduce from './reduce-right/main-reduce'
 
 const reduce = mainReduce
 

@@ -1,6 +1,6 @@
 import { expect } from 'chai'
 import reduce from './reduce-recursive'
-import reduceRight from '../reduce-right/reduce-right-recursive'
+import reduceRight from './reduce-right/reduce-right-recursive'
 
 it("reduce should be a function", () => {
     expect(reduce).to.be.a('function')

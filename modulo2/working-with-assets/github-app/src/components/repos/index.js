@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-import './repos'
+import './repos.css'
 
 const Repos = ({ className, title, repos }) => (
     <div className={` repos-list ${className}`}>

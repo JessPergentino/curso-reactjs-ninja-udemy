@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react'
-import Search from './search'
-import UserInfo from './user-info'
-import Actions from './actions'
-import Repos from './repos'
+import Search from '../search'
+import UserInfo from '../user-info'
+import Actions from '../actions'
+import Repos from '../repos'
+import './app.css'
 
 const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClickRepo, onClickStarred }) => (
     <div className='app'>
@@ -12,19 +13,21 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClic
         {!!userinfo && <UserInfo userinfo={userinfo} />}
         {!!userinfo && <Actions onClickRepo={onClickRepo} onClickStarred={onClickStarred} />}
 
-        {!!repos.length &&
-            <Repos
-                className='repos'
-                title='Repositórios:'
-                repos={repos} />
-        }
+        <div className='repos-container'>
+            {!!repos.length &&
+                <Repos
+                    className='repos'
+                    title='Repositórios:'
+                    repos={repos} />
+            }
 
-        {!!starred.length &&
-            <Repos
-                className='starred'
-                title='Favoritos:'
-                repos={starred} />
-        }
+            {!!starred.length &&
+                <Repos
+                    className='starred'
+                    title='Favoritos:'
+                    repos={starred} />
+            }
+        </div>
     </div>
 )
 

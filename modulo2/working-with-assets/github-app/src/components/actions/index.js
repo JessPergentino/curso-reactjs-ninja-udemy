@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react'
+import './actions.css'
 
 const Actions = ({ onClickRepo, onClickStarred }) => (
     <div className='actions'>

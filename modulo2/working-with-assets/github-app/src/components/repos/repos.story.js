@@ -1,7 +1,18 @@
 import { storiesOf } from '@kadira/storybook'
 import React from 'react'
+import Repos from './index'
 
 storiesOf('Repos', module)
-    .add('first story repos', () => (
-        <h1>Repos</h1>
+    .add('with title prop', () => (
+        <Repos title='Favoritos' />
+    ))
+
+    .add('with repos', () => (
+        <Repos
+            title='Favoritos'
+            repos={[{
+                link: 'www.teste.com',
+                name: 'Teste'
+            }]}
+        />
     ))

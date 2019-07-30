@@ -3,6 +3,10 @@ const centerRule = ({ total, activePage }) => {
     return 1
   }
 
+  if (activePage === total) {
+    return activePage - 2
+  }
+
   return activePage - 1
 }
 
@@ -21,6 +25,28 @@ const pagination = ({ total, activePage }) => {
 
   pages = pages.filter((page, index, array) => array.indexOf(page) === index)
 
+  let firstPage = pages[0]
+  let secondPage = pages[1]
+
+  if (secondPage === (firstPage + 2)) {
+    pages = [
+      firstPage,
+      firstPage + 1,
+      ...pages.slice(1)
+    ]
+  }
+
+  firstPage = pages[0]
+  secondPage = pages[1]
+
+  if (secondPage > (firstPage + 2)) {
+    pages = [
+      firstPage,
+      '...',
+      ...pages.slice(1)
+    ]
+  }
+
   let penultimatePage = pages[pages.length - 2]
   let lastPage = pages[pages.length - 1]
 
@@ -35,7 +61,7 @@ const pagination = ({ total, activePage }) => {
   penultimatePage = pages[pages.length - 2]
   lastPage = pages[pages.length - 1]
 
-  if (penultimatePage <= (lastPage - 2)) {
+  if (penultimatePage < (lastPage - 2)) {
     pages = [
       ...pages.slice(0, -1),
       '...',

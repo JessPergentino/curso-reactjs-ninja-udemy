@@ -6,39 +6,39 @@ import Repos from '../repos'
 import './app.css'
 
 const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClickRepo, onClickStarred }) => (
-    <div className='app'>
-        <Search isDisable={isFetching} handleSearch={handleSearch} />
+  <div className='app'>
+    <Search isDisable={isFetching} handleSearch={handleSearch} />
 
-        {isFetching && <div>Carregando...</div>}
-        {!!userinfo && <UserInfo userinfo={userinfo} />}
-        {!!userinfo && <Actions onClickRepo={onClickRepo} onClickStarred={onClickStarred} />}
+    {isFetching && <div>Carregando...</div>}
+    {!!userinfo && <UserInfo userinfo={userinfo} />}
+    {!!userinfo && <Actions onClickRepo={onClickRepo} onClickStarred={onClickStarred} />}
 
-        <div className='repos-container'>
-            {!!repos.length &&
-                <Repos
-                    className='repos'
-                    title='Repositórios:'
-                    repos={repos} />
-            }
+    <div className='repos-container'>
+      {!!repos.length &&
+      <Repos
+        className='repos'
+        title='Repositórios:'
+        repos={repos} />
+      }
 
-            {!!starred.length &&
-                <Repos
-                    className='starred'
-                    title='Favoritos:'
-                    repos={starred} />
-            }
-        </div>
+      {!!starred.length &&
+        <Repos
+          className='starred'
+          title='Favoritos:'
+          repos={starred} />
+      }
     </div>
+  </div>
 )
 
 AppContent.propTypes = {
-    userinfo: PropTypes.object,
-    repos: PropTypes.array.isRequired,
-    starred: PropTypes.array.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    handleSearch: PropTypes.func.isRequired,
-    onClickRepo: PropTypes.func.isRequired,
-    onClickStarred: PropTypes.func.isRequired
+  userinfo: PropTypes.object,
+  repos: PropTypes.array.isRequired,
+  starred: PropTypes.array.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  handleSearch: PropTypes.func.isRequired,
+  onClickRepo: PropTypes.func.isRequired,
+  onClickStarred: PropTypes.func.isRequired
 }
 
 export default AppContent

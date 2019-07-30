@@ -100,3 +100,41 @@ test('pagination({total: 15, activePage: 8}) should be return [1, "...", 7,8,9 ,
   const result = [1, '...', 7, 8, 9, '...', 15]
   expect(pagination(params)).to.be.deep.equal(result)
 })
+
+// TESTES DE EXCEÇÃO
+test('pagination({total: 15}) should be return [1, 2, 3, "...", 15]', () => {
+  const params = { total: 15 }
+  const result = [1, 2, 3, '...', 15]
+  expect(pagination(params)).to.be.deep.equal(result)
+})
+
+test('pagination({}) should be return [1]', () => {
+  const params = {}
+  const result = [1]
+  expect(pagination(params)).to.be.deep.equal(result)
+})
+
+test('pagination() should be return [1]', () => {
+  const result = [1]
+  expect(pagination()).to.be.deep.equal(result)
+})
+
+test('pagination({total: "abc", activePage: 1}) should be throw an error', () => {
+  const params = { total: 'abc', activePage: 1 }
+  const result = 'total must be a number'
+  try {
+    pagination(params)
+  } catch (e) {
+    expect(e.message).to.be.equal(result)
+  }
+})
+
+test('pagination({total: 10, activePage: "1a"}) should be throw an error', () => {
+  const params = { total: 10, activePage: '1a' }
+  const result = 'activePage must be a number'
+  try {
+    pagination(params)
+  } catch (e) {
+    expect(e.message).to.be.equal(result)
+  }
+})

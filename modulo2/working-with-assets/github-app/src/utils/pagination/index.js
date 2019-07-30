@@ -10,8 +10,16 @@ const centerRule = ({ total, activePage }) => {
   return activePage - 1
 }
 
-const pagination = ({ total, activePage }) => {
+const pagination = ({ total = 1, activePage = 1 } = {}) => {
   // Ecmascript 5 return Array.apply(null, {length: total}).map((_, i) => i + 1)
+  if (typeof total !== 'number') {
+    throw new TypeError('total must be a number')
+  }
+
+  if (typeof activePage !== 'number') {
+    throw new TypeError('activePage must be a number')
+  }
+
   if (total <= 5) {
     return Array.from({ length: total }, (_, i) => i + 1)
   }

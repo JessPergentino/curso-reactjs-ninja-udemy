@@ -5,7 +5,7 @@ import Actions from '../actions'
 import Repos from '../repos'
 import './app.css'
 
-const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClickRepo, onClickStarred }) => (
+const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClickRepo, onClickStarred, handlePagination }) => (
   <div className='app'>
     <Search isDisable={isFetching} handleSearch={handleSearch} />
 
@@ -15,17 +15,21 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClic
 
     <div className='repos-container'>
       {!!repos.length &&
-      <Repos
-        className='repos'
-        title='Repositórios:'
-        repos={repos} />
+        <Repos
+          className='repos'
+          title='Repositórios:'
+          repos={repos}
+          handlePagination={(clicked) => handlePagination('repos', clicked)}
+        />
       }
 
       {!!starred.length &&
         <Repos
           className='starred'
           title='Favoritos:'
-          repos={starred} />
+          repos={starred}
+          handlePagination={(clicked) => handlePagination('starred', clicked)}
+        />
       }
     </div>
   </div>
@@ -38,7 +42,8 @@ AppContent.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   handleSearch: PropTypes.func.isRequired,
   onClickRepo: PropTypes.func.isRequired,
-  onClickStarred: PropTypes.func.isRequired
+  onClickStarred: PropTypes.func.isRequired,
+  handlePagination: PropTypes.func.isRequired
 }
 
 export default AppContent

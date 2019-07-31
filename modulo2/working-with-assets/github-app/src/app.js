@@ -11,7 +11,7 @@ const initialReposState = {
 }
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       userinfo: null,
@@ -24,14 +24,14 @@ class App extends Component {
     this.handleSearch = this.handleSearch.bind(this)
   }
 
-  getGitHubApiUrl(username, type, page = 1) {
+  getGitHubApiUrl (username, type, page = 1) {
     const internalUser = username ? `/${username}` : ''
     const internalType = type ? `/${type}` : ''
 
     return `https://api.github.com/users${internalUser}${internalType}?per_page=${this.perPage}&page=${page}`
   }
 
-  handleSearch(e) {
+  handleSearch (e) {
     const value = e.target.value
     const keyCode = e.which || e.keyCode
     const ENTER = 13
@@ -59,7 +59,7 @@ class App extends Component {
     }
   }
 
-  getRepos(type, page) {
+  getRepos (type, page) {
     return (e) => {
       const username = this.state.userinfo.login
       ajax().get(this.getGitHubApiUrl(username, type, page))
@@ -83,7 +83,7 @@ class App extends Component {
     }
   }
 
-  render() {
+  render () {
     return <AppContent
       {...this.state}
       handleSearch={this.handleSearch}

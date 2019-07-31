@@ -1,6 +1,3 @@
-'use strict'
-
-const path = require('path')
 const webpack = require('webpack')
 const validate = require('webpack-validator')
 const HtmlPlugin = require('html-webpack-plugin')
@@ -34,10 +31,9 @@ module.exports = validate({
     }),
 
     new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin()
 
   ],
-
   module: {
     preLoaders: [common.standardPreLoader],
     loaders: [

@@ -6,7 +6,7 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, '..', 'dist'),
-    filename: '[name]-[hash].js',
+    filename: '[name]-[hash].js'
   },
 
   htmlPluginConfig: (template) => ({
@@ -40,7 +40,6 @@ module.exports = {
       src: path.join(__dirname, '..', 'src'),
       components: path.join(__dirname, '..', 'src', 'components'),
       utils: path.join(__dirname, '..', 'src', 'utils')
-      
     }
   }
 }

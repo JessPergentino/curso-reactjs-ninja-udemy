@@ -14,7 +14,7 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClic
     {!!userinfo && <Actions onClickRepo={onClickRepo} onClickStarred={onClickStarred} />}
 
     <div className='repos-container'>
-      {!!repos.length &&
+      {!!repos.repos.length &&
         <Repos
           className='repos'
           title='Repositórios:'
@@ -23,7 +23,7 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClic
         />
       }
 
-      {!!starred.length &&
+      {!!starred.repos.length &&
         <Repos
           className='starred'
           title='Favoritos:'
@@ -35,10 +35,15 @@ const AppContent = ({ userinfo, repos, starred, isFetching, handleSearch, onClic
   </div>
 )
 
+const reposPropTypesShapes = {
+  repos: PropTypes.array.isRequired,
+  pagination: PropTypes.object
+}
+
 AppContent.propTypes = {
   userinfo: PropTypes.object,
-  repos: PropTypes.array.isRequired,
-  starred: PropTypes.array.isRequired,
+  repos: PropTypes.shape(reposPropTypesShapes).isRequired,
+  starred: PropTypes.shape(reposPropTypesShapes).isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleSearch: PropTypes.func.isRequired,
   onClickRepo: PropTypes.func.isRequired,

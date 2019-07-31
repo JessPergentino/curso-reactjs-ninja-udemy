@@ -15,13 +15,13 @@
 
     <% htmlWebpackPlugin.files.js.forEach((jsFile) => { %>
     <script async src="<%= jsFile %>"></script>
-    <%=})%>
+    <% }) %>
 
     <% htmlWebpackPlugin.files.css.forEach((cssFile) => { %>
-    <% if(cssFile !== 'crp.css') { %>
-    <link rel="stylesheet" href="<%=cssFile%>">
-    <%}%>
-    <%=})%>
+    <% if (cssFile !== 'crp.css') { %>
+    <link rel="stylesheet" href="<%= cssFile %>">
+    <% } %>
+    <% }) %>
 </body>
 
 </html>

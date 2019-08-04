@@ -33,7 +33,7 @@ module.exports = {
       chunks: ['main'],
       minChunks: ({ resource }) => (
         /node_modules\/(react(-dom)?|fbjs)\//.test(resource) ||
-        /node_modules\/preact(-compat)?\//.test(resource)
+        /node_modules\/preact/.test(resource)
       )
     }),
 

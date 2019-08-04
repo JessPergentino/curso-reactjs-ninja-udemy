@@ -10,8 +10,7 @@ const MarkDownEditor = ({ value, handleChange, getMarkup }) => (
       autoFocus
     />
 
-    <div className='view' dangerouslySetInnerHTML={getMarkup()}>
-    </div>
+    <div className='view' dangerouslySetInnerHTML={getMarkup()} />
   </div >
 )
 

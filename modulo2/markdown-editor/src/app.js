@@ -14,7 +14,7 @@ marked.setOptions({
 })
 
 class App extends Component {
-  constructor() {
+  constructor () {
     super()
 
     this.state = { value: '' }
@@ -30,7 +30,7 @@ class App extends Component {
     }
   }
 
-  render() {
+  render () {
     return (
       <MarckDownEditor
         value={this.state.value}

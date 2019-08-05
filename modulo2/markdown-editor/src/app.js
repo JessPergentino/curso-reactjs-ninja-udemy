@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { Component } from 'react'
-import MarckDownEditor from './markdown-editor'
+import MarckDownEditor from 'components/markdown-editor'
 import marked from 'marked'
 
 import './css/style.css'
@@ -31,6 +31,10 @@ class App extends Component {
 
     this.getMarkup = () => {
       return { __html: marked(this.state.value) }
+    },
+
+    this.handleSave = () => {
+      localStorage.setItem('md', this.state.value)
     }
   }
 
@@ -46,6 +50,7 @@ class App extends Component {
         value={this.state.value}
         handleChange={this.handleChange}
         getMarkup={this.getMarkup}
+        handleSave={this.handleSave}
       />
     )
   }

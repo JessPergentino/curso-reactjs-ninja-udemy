@@ -18,7 +18,7 @@ import('highlight.js').then((hljs) => {
 })
 
 class App extends Component {
-  constructor () {
+  constructor() {
     super()
 
     this.state = { value: '' }
@@ -33,18 +33,26 @@ class App extends Component {
       return { __html: marked(this.state.value) }
     },
 
-    this.handleSave = () => {
-      localStorage.setItem('md', this.state.value)
-    }
+      this.handleSave = () => {
+        localStorage.setItem('md', this.state.value)
+      }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const value = localStorage.getItem('md')
-
     this.setState({ value })
   }
 
-  render () {
+  componentDidUpdate() {
+    clearInterval(this.timer)
+    this.timer = setTimeout(this.handleSave, 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+
+  render() {
     return (
       <MarckDownEditor
         value={this.state.value}

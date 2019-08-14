@@ -46,32 +46,43 @@ class App extends Component {
 
     this.handleRemove = () => {
       localStorage.removeItem('md')
-      this.setState({value: ''})
+      this.setState({ value: '' })
+    }
+
+    this.handleCreate = () => {
+      this.setState({ value: '' })
+      this.textarea.focus()
+    }
+
+    this.textareaRef = (node) => {
+      this.textarea = node
     }
   }
 
-  componentDidMount () {
+  componentDidMount() {
     const value = localStorage.getItem('md')
     this.setState({ value: value || '' })
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     clearInterval(this.timer)
     this.timer = setTimeout(this.handleSave, 1000)
   }
 
-  componentWillUnmount () {
+  componentWillUnmount() {
     clearInterval(this.timer)
   }
 
-  render () {
+  render() {
     return (
       <MarckDownEditor
         value={this.state.value}
         isSaving={this.state.isSaving}
         handleChange={this.handleChange}
+        handleCreate={this.handleCreate}
         handleRemove={this.handleRemove}
         getMarkup={this.getMarkup}
+        textareaRef={this.textareaRef}
       />
     )
   }

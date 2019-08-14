@@ -21,11 +21,15 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = { value: '' }
+    this.state = { 
+      value: '',
+      isSaving: false
+    }
 
     this.handleChange = (e) => {
       this.setState({
-        value: e.target.value
+        value: e.target.value,
+        isSaving: true
       })
     }
 
@@ -33,8 +37,9 @@ class App extends Component {
       return { __html: marked(this.state.value) }
     },
 
-      this.handleSave = () => {
+      this.handleSave = (value) => {
         localStorage.setItem('md', this.state.value)
+        this.setState({isSaving: false})
       }
   }
 
@@ -56,9 +61,9 @@ class App extends Component {
     return (
       <MarckDownEditor
         value={this.state.value}
+        isSaving={this.state.isSaving}
         handleChange={this.handleChange}
         getMarkup={this.getMarkup}
-        handleSave={this.handleSave}
       />
     )
   }

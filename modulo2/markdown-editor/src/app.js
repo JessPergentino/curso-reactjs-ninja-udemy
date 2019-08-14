@@ -21,7 +21,7 @@ class App extends Component {
   constructor() {
     super()
 
-    this.state = { 
+    this.state = {
       value: '',
       isSaving: false
     }
@@ -35,34 +35,42 @@ class App extends Component {
 
     this.getMarkup = () => {
       return { __html: marked(this.state.value) }
-    },
+    }
 
-      this.handleSave = (value) => {
+    this.handleSave = (value) => {
+      if (this.state.isSaving) {
         localStorage.setItem('md', this.state.value)
-        this.setState({isSaving: false})
+        this.setState({ isSaving: false })
       }
+    }
+
+    this.handleRemove = () => {
+      localStorage.removeItem('md')
+      this.setState({value: ''})
+    }
   }
 
-  componentDidMount() {
+  componentDidMount () {
     const value = localStorage.getItem('md')
-    this.setState({ value })
+    this.setState({ value: value || '' })
   }
 
-  componentDidUpdate() {
+  componentDidUpdate () {
     clearInterval(this.timer)
     this.timer = setTimeout(this.handleSave, 1000)
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearInterval(this.timer)
   }
 
-  render() {
+  render () {
     return (
       <MarckDownEditor
         value={this.state.value}
         isSaving={this.state.isSaving}
         handleChange={this.handleChange}
+        handleRemove={this.handleRemove}
         getMarkup={this.getMarkup}
       />
     )

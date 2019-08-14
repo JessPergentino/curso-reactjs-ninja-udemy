@@ -1,19 +1,29 @@
 import React, { PropTypes } from 'react'
+import Button from 'components/button'
 
 const MarkdownEditorHeader = ({ isSaving, handleRemove, handleCreate }) => (
   <header className='editor-header'>
-    <p className='save-message'>
+    {isSaving != null && (<p className='save-message'>
       {isSaving ? 'Salvando...' : 'Salvo'}
-    </p>
+    </p>)}
 
-    <button onClick={handleCreate} className='button-create'>Criar Novo</button>
-    <button onClick={handleRemove} className='button-remove'>Remover</button>
+    <Button
+      onClick={handleCreate}
+      kind='success'>
+      Criar Novo
+    </Button>
+
+    <Button
+      onClick={handleRemove}
+      kind='danger'>
+      Remover
+    </Button>
 
   </header>
 )
 
 MarkdownEditorHeader.propTypes = {
-  isSaving: PropTypes.bool.isRequired,
+  isSaving: PropTypes.bool,
   handleRemove: PropTypes.func.isRequired,
   handleCreate: PropTypes.func.isRequired
 }

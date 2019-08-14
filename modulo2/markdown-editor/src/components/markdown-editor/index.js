@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Header from './header'
 
-const MarkDownEditor = ({ value, handleChange, getMarkup, textareaRef, ...props}) => (
+const MarkDownEditor = ({ value, handleChange, getMarkup, textareaRef, ...props }) => (
   <section className='editor'>
     <Header {...props} />
     <textarea

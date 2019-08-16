@@ -5,8 +5,7 @@ import SaveMessage from 'components/save-message'
 
 const MarkdownEditorHeader = ({ isSaving, handleRemove, handleCreate }) => (
   <header className='editor-header'>
-    <SaveMessage isSaving={isSaving}/>
-    
+    <SaveMessage isSaving={isSaving} />
     <Button
       onClick={handleCreate}
       kind='success'>

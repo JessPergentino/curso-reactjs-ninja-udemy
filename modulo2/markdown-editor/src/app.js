@@ -29,7 +29,8 @@ class App extends Component {
 
     this.state = {
       ...this.clearState(),
-      isSaving: null
+      isSaving: null,
+      files: {}
     }
 
     this.handleChange = (e) => {
@@ -45,8 +46,20 @@ class App extends Component {
 
     this.handleSave = (value) => {
       if (this.state.isSaving) {
-        localStorage.setItem(this.state.id, this.state.value)
-        this.setState({ isSaving: false })
+        const newFile = {
+          title: 'Sem Titulo',
+          content: this.state.value
+        }
+
+        localStorage.setItem(this.state.id, JSON.stringify(newFile))
+
+        this.setState({
+          isSaving: false,
+          files: {
+            ...this.state.files,
+            [this.state.id]: newFile
+          }
+        })
       }
     }
 
@@ -57,6 +70,11 @@ class App extends Component {
 
     this.handleRemove = () => {
       localStorage.removeItem(this.state.id)
+
+      //eslint-disable-next-line no-unused-vars
+      const { [this.state.id]: id, ...files } = this.state.files
+
+      this.setState({ files })
       this.createNew()
     }
 
@@ -67,6 +85,23 @@ class App extends Component {
     this.textareaRef = (node) => {
       this.textarea = node
     }
+
+    this.handleOpenFile = (fileId) => () => {
+      this.setState({
+        value: this.state.files[fileId].content,
+        id: fileId
+      })
+    }
+  }
+
+  componentDidMount() {
+    const files = Object.keys(localStorage)
+    this.setState({
+      files: files.reduce((acc, fileId) => ({
+        ...acc,
+        [fileId]: JSON.parse(localStorage.getItem(fileId))
+      }), {})
+    })
   }
 
   componentDidUpdate() {
@@ -88,6 +123,8 @@ class App extends Component {
         handleRemove={this.handleRemove}
         getMarkup={this.getMarkup}
         textareaRef={this.textareaRef}
+        files={this.state.files}
+        handleOpenFile={this.handleOpenFile}
       />
     )
   }

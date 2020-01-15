@@ -23,3 +23,19 @@ it('should add a new counter again', () => {
 
   expect(counters(before, action)).to.be.deep.equal(after)
 })
+
+it('should remove a counter', () => {
+  const before = deepFreeze([0, 1, 2])
+  const action = deepFreeze({type: 'REMOVE_COUNTER', index: 1})
+  const after = [0, 2]
+
+  expect(counters(before, action)).to.be.deep.equal(after)
+})
+
+it('should remove a counter again', () => {
+  const before = deepFreeze([3, 1])
+  const action = deepFreeze({type: 'REMOVE_COUNTER', index: 0})
+  const after = [1]
+
+  expect(counters(before, action)).to.be.deep.equal(after)
+})

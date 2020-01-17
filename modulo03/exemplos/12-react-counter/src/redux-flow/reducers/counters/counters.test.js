@@ -1,5 +1,3 @@
-/* global it */
-
 import counters, { initialState } from './index'
 import {
   ADD_COUNTER,

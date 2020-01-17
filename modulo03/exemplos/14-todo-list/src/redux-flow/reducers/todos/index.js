@@ -1,6 +1,6 @@
 import { ADD_TODO, TOGGLE_TODO } from './actions'
 
-const initialState = []
+export const initialState = []
 
 const todos = (state = initialState, action) => {
   switch (action.type) {
@@ -21,9 +21,8 @@ const todos = (state = initialState, action) => {
           completed: !todo.completed
         }
       })
-    default:
-      break
   }
+  return state
 }
 
 export default todos

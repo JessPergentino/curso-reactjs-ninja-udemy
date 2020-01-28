@@ -1,6 +1,13 @@
 import React from 'react'
 
-const SearchCep = () => (
+const SearchCep = ({
+  address,
+  city,
+  code,
+  district,
+  state,
+  status
+}) => (
   <div>
     <form>
       <input type='text' name='cep' />
@@ -20,15 +27,15 @@ const SearchCep = () => (
 
       <tbody>
         <tr>
-          <td>808008080</td>
-          <td>Rua</td>
-          <td>Bairro</td>
-          <td>Cidade</td>
-          <td>Estado</td>
+          <td>{code}</td>
+          <td>{address}</td>
+          <td>{district}</td>
+          <td>{city}</td>
+          <td>{state}</td>
         </tr>
       </tbody>
     </table>
   </div>
-)
+  )
 
 export default SearchCep

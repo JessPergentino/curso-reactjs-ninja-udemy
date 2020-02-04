@@ -9,11 +9,7 @@ const store = configureStore()
 
 const videos = db.ref('videos')
 
-const anyVideo = videos.child('234')
-
-anyVideo.update({
-  title: 'JS Video'
-})
+db.ref('categories').remove()
 
 videos.on('value', (snapshot) => {
   console.log('snapshop:', snapshot.val())

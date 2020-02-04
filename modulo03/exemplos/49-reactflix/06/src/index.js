@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import App from './app'
 import configureStore from './redux-flow/configure-store'
 import { db } from './config/firebase'
+
 const store = configureStore()
 
 const videos = db.ref('videos')

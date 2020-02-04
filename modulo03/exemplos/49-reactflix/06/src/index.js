@@ -9,11 +9,10 @@ const store = configureStore()
 
 const videos = db.ref('videos')
 
-const videoJs = videos.push()
+const anyVideo = videos.child('234')
 
-videoJs.set({
-  id: '7Ur9zN2vMcs',
-  title: 'Javascript Secrets'
+anyVideo.update({
+  title: 'JS Video'
 })
 
 videos.on('value', (snapshot) => {

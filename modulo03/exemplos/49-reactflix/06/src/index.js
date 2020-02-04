@@ -9,6 +9,13 @@ const store = configureStore()
 
 const videos = db.ref('videos')
 
+const videoJs = videos.push()
+
+videoJs.set({
+  id: '7Ur9zN2vMcs',
+  title: 'Javascript Secrets'
+})
+
 videos.on('value', (snapshot) => {
   console.log('snapshop:', snapshot.val())
 }, (error) => {

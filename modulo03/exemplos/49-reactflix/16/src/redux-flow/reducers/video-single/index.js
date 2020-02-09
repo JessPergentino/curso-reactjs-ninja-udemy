@@ -1,5 +1,5 @@
 import createReducer from '../create-reducer'
-import SELECT_VIDEO_SINGLE from './actions'
+import { SELECT_VIDEO_SINGLE } from './actions'
 
 const initialState = ''
 

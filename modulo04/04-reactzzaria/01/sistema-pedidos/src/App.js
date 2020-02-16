@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <Fragment>
+      {[1, 2, 3].map((item) => (
+        <Fragment key={item}>
+          <span>Item: {item}</span>
+          <span>Número: {item}</span>
+        </Fragment>
+      ))}
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
@@ -19,7 +26,7 @@ function App() {
           Learn React
         </a>
       </header>
-    </div>
+    </Fragment>
   );
 }
 

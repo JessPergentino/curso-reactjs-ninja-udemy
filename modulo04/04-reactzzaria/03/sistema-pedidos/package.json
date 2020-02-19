@@ -10,7 +10,8 @@
   "scripts": {
     "dev": "rescripts start",
     "build": "rescripts build",
-    "test": "rescripts test"
+    "test": "rescripts test",
+    "lint:fix": "standard --fix | snazzy"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -23,6 +24,12 @@
   "rescripts": [
     "env"
   ],
+  "standard": {
+    "parser": "babel-eslint",
+    "globals": [
+      "fetch"
+    ]
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -45,6 +52,8 @@
     "eslint-plugin-node": "11.0.0",
     "eslint-plugin-promise": "4.2.1",
     "eslint-plugin-react": "7.18.3",
-    "eslint-plugin-standard": "4.0.1"
+    "eslint-plugin-standard": "4.0.1",
+    "snazzy": "8.0.0",
+    "standard": "14.3.1"
   }
 }

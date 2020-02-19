@@ -3,7 +3,7 @@ import { PureComponent } from 'react'
 class ErrorBoundary extends PureComponent {
   state = { hasError: false }
 
-  static getDerivedStateFromError(error) {
+  static getDerivedStateFromError (error) {
     console.log('erro getDerivedStateFromError:', error.message)
     return { hasError: true }
   }

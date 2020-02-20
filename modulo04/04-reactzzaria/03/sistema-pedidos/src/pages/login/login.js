@@ -1,7 +1,12 @@
 import React from 'react'
+import { Button } from '@material-ui/core'
+import { ReactComponent as Logo } from './logo-react-zzaria.svg'
 
 const Login = () => (
-  <h1>Login</h1>
+  <>
+    <Logo />
+    <Button>Entrar com Github</Button>
+  </>
 )
 
 export default Login

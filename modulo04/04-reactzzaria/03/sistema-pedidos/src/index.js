@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './app'
+import Root from './root'
 import * as serviceWorker from './serviceWorker'
 
 import ErrorBoudary from './error'
@@ -8,7 +8,7 @@ import ErrorBoudary from './error'
 ReactDOM.render(
   <ErrorBoudary>
     {(hasError) => (
-      <App hasError={hasError} />
+      <Root hasError={hasError} />
     )}
   </ErrorBoudary>,
   document.getElementById('root')

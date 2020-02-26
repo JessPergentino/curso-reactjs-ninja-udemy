@@ -1,40 +1,12 @@
-import React, { useState, useEffect, useCallback, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { Button, Grid } from '@material-ui/core'
-
-import firebase from 'services/firebase'
 
 import { ReactComponent as MainLogo } from './logo-react-zzaria.svg'
 import { AuthContext } from 'contexts/auth'
 
 const Login = () => {
   const { handleLogin } = useContext(AuthContext)
-  const [userInfo, setUserInfo] = useState({
-    isUserLoggedIn: false,
-    user: null
-  })
-
-  const { isUserLoggedIn, user } = userInfo
-
-  useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      console.log('Usuário', user)
-      setUserInfo({
-        isUserLoggedIn: !!user,
-        user
-      })
-    })
-  }, [])
-
-  const handleLogout = useCallback(() => {
-    firebase.auth().signOut().then(() => {
-      console.log('deslogou!')
-      setUserInfo({
-        isUserLoggedIn: false,
-        user: null
-      })
-    })
-  }, [])
 
   return (
     <Container>
@@ -44,22 +16,9 @@ const Login = () => {
         </Grid>
 
         <Grid item xs={12} container justify='center'>
-          {isUserLoggedIn && (
-            <>
-              <pre>{user.displayName}</pre>
-              <Button variant='contained' onClick={handleLogout}>
-                Sair
-              </Button>
-            </>
-          )}
-
-          {!isUserLoggedIn && (
-            <>
-              <GithubButton onClick={handleLogin}>
-                Entrar com Github
-              </GithubButton>
-            </>
-          )}
+          <GithubButton onClick={handleLogin}>
+            Entrar com Github
+          </GithubButton>
         </Grid>
       </Grid>
     </Container>

@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React, { lazy, Suspense, useEffect, useContext } from 'react'
+import React, { lazy, Suspense, useState, useEffect, useContext } from 'react'
 import t from 'prop-types'
 import { Route, Switch, Redirect } from 'react-router-dom'
 import { LinearProgress } from '@material-ui/core'
@@ -11,7 +11,8 @@ const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
 
 function App () {
-  const { userInfo, setUserInfo } = useContext(AuthContext)
+  const { userInfo, setUserInfo, handleLogout } = useContext(AuthContext)
+  const [didCheckUserIn, setDidCheckUserIn] = useState(false)
 
   const { isUserLoggedIn } = userInfo
 
@@ -22,8 +23,18 @@ function App () {
         isUserLoggedIn: !!user,
         user
       })
+      setDidCheckUserIn(true)
     })
+
+    window.logout = handleLogout
   }, [])
+
+  if (!didCheckUserIn) {
+    console.log('Ainda não checou se usuário está logado')
+    return <LinearProgress />
+  }
+
+  console.log('já checou se o usuário está logado')
 
   if (isUserLoggedIn) {
     console.log('usuário está logado')

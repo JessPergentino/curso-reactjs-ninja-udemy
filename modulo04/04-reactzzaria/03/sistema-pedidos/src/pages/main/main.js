@@ -1,25 +1,23 @@
 import React from 'react'
-import { Route, Switch } from 'react-router-dom'
-
-const routes = [
-  { path: '/rota1', content: 'rota 1' },
-  { path: '/rota2', content: 'rota 2' }
-]
+import {
+  AppBar,
+  Toolbar,
+  IconButton
+} from '@material-ui/core'
+import { AccountCircle } from '@material-ui/icons'
+import { ReactComponent as MainLogo } from 'pages/login/logo-react-zzaria.svg'
 
 const Main = () => (
-  <>
-    <h1>Main</h1>
+  <AppBar>
+    <Toolbar>
+      <MainLogo />
 
-    <Switch>
-      {routes.map(route => (
-        <Route
-          key={route.path}
-          path={route.path}
-          render={() => <h2>{route.content}</h2>}
-        />
-      ))}
-    </Switch>
-  </>
+      <IconButton color='inherit'>
+        <AccountCircle />
+      </IconButton>
+
+    </Toolbar>
+  </AppBar>
 )
 
 export default Main

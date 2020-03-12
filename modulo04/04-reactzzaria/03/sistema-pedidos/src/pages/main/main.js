@@ -7,7 +7,8 @@ import {
   Menu,
   MenuItem,
   Toolbar as MaterialToolbar,
-  Typography
+  Typography,
+  withStyles
 } from '@material-ui/core'
 import { AccountCircle } from '@material-ui/icons'
 import { ReactComponent as MainLogo } from 'images/logo-react-zzaria.svg'
@@ -51,6 +52,8 @@ const Main = () => {
         </Toolbar>
       </AppBar>
 
+      <Spacer />
+
       <Content>
         <Grid container justify='center'>
           <Grid item>
@@ -88,7 +91,14 @@ width: 100%;
 `
 
 const Content = styled.main`
-padding: 80px 20px 20px;
+padding: 20px;
 `
+const style = (theme) => ({
+  main: theme.mixins.toolbar
+})
+
+const Spacer = withStyles(style)(({ classes }) => (
+  <div className={classes.main} />
+))
 
 export default Main

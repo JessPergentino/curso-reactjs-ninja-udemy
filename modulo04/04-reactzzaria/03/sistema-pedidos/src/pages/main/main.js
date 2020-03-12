@@ -1,58 +1,22 @@
-import React, { useState, useContext } from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import {
-  AppBar,
   Divider as MaterialDivider,
   Grid,
-  IconButton,
-  Menu,
-  MenuItem,
   Paper,
-  Toolbar as MaterialToolbar,
   Typography,
   withStyles
 } from '@material-ui/core'
-import { AccountCircle } from '@material-ui/icons'
-import { ReactComponent as MainLogo } from 'images/logo-react-zzaria.svg'
 import { AuthContext } from 'contexts/auth'
+import Header from './header'
 
 const Main = () => {
-  const [anchorElement, setAnchorElement] = useState(null)
-  const { userInfo, handleLogout } = useContext(AuthContext)
+  const { userInfo } = useContext(AuthContext)
   const userName = userInfo.user.displayName.split(' ')[0]
-
-  const handleOpenMenu = (e) => {
-    setAnchorElement(e.target)
-  }
-
-  const handleClose = () => {
-    setAnchorElement(null)
-  }
 
   return (
     <>
-      <AppBar>
-        <Toolbar>
-          <LogoContainer>
-            <Logo />
-          </LogoContainer>
-
-          <Typography color='inherit'>Olá, {userName}</Typography>
-
-          <IconButton color='inherit' onClick={handleOpenMenu}>
-            <AccountCircle />
-          </IconButton>
-
-          <Menu
-            open={!!anchorElement}
-            onClose={handleClose}
-            anchorEl={anchorElement}
-          >
-            <MenuItem onClick={handleLogout}>Sair</MenuItem>
-          </Menu>
-
-        </Toolbar>
-      </AppBar>
+      <Header />
 
       <Spacer />
 
@@ -118,22 +82,6 @@ const pizzaSizes = [
     flavours: 2
   }
 ]
-
-const LogoContainer = styled.div`
-flex-grow: 1;
-`
-const Logo = styled(MainLogo)`
-height: 50px;
-width: 200px;
-
-& path {
-  fill: #fff
-}
-
-& line {
-  stroke: #fff
-}
-`
 
 const Divider = styled(MaterialDivider)`
 margin: 20px 0;
@@ -202,12 +150,6 @@ justify-content: center;
 position: relative;
 width: 80px;
 z-index: 1;
-`
-
-const Toolbar = styled(MaterialToolbar)`
-margin: 0 auto;
-max-width: 960px;
-width: 100%;
 `
 
 const Content = styled.main`

@@ -14,7 +14,6 @@ import { AuthContext } from 'contexts/auth'
 
 const Header = () => {
   const { userInfo, handleLogout } = useContext(AuthContext)
-  const userName = userInfo.user.displayName.split(' ')[0]
 
   const [anchorElement, setAnchorElement] = useState(null)
   const handleOpenMenu = (e) => {
@@ -31,7 +30,7 @@ const Header = () => {
           <Logo />
         </LogoContainer>
 
-        <Typography color='inherit'>Olá, {userName}</Typography>
+        <Typography color='inherit'>Olá, {userInfo.user.firstName}</Typography>
 
         <IconButton color='inherit' onClick={handleOpenMenu}>
           <AccountCircle />

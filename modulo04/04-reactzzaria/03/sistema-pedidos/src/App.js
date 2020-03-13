@@ -11,7 +11,7 @@ const MainPage = lazy(() => import('pages/main'))
 const Login = lazy(() => import('pages/login'))
 
 function App () {
-  const { userInfo, setUserInfo, handleLogout } = useContext(AuthContext)
+  const { userInfo, setUserInfo } = useContext(AuthContext)
   const [didCheckUserIn, setDidCheckUserIn] = useState(false)
 
   const { isUserLoggedIn } = userInfo
@@ -28,9 +28,7 @@ function App () {
       })
       setDidCheckUserIn(true)
     })
-
-    window.logout = handleLogout
-  }, [])
+  }, [setUserInfo])
 
   if (!didCheckUserIn) {
     return <LinearProgress />

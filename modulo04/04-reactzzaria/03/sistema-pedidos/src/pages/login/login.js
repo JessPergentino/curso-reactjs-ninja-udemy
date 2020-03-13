@@ -10,7 +10,7 @@ const Login = () => {
 
   return (
     <Container>
-      <Grid container justify='center' spacing={10}>
+      <Grid container justify='center' spacing={5}>
         <Grid item>
           <Logo />
         </Grid>
